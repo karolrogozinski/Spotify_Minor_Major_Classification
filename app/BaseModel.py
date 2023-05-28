@@ -25,12 +25,16 @@ def evaluate_model(model: XGBClassifier,
                    X_train: pd.DataFrame,
                    X_test: pd.DataFrame,
                    y_train: pd.DataFrame,
-                   y_test: pd.Series) -> None:
+                   y_test: pd.Series,
+                   is_for_stats=False) -> None:
     
     model.fit(X_train, y_train)
     preds = model.predict(X_test)
 
-    return preds
+    if not is_for_stats:
+        return preds
+    else:
+        return preds, y_test
 
 def get_stats(preds, y_test):
     stats = []

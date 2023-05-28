@@ -142,12 +142,12 @@ const App = () => {
             <h3>Predykcje zostaną pobrane do pliku final_model_predictions.txt do folderu aplikacji.</h3>
 
             <label>
-              Tracks file:    
+              Plik z danymi utworów:    
               <input type="file" onChange={handleTracksFileChange}/>
             </label>
 
             <label>
-              Artists file:    
+              Plik z danymi artystów:    
               <input type="file" onChange={handleArtistsFileChange}/>
             </label>
 
@@ -164,12 +164,12 @@ const App = () => {
             <h4>Wyniki zostaną wyświetlone na ekranie.</h4>
 
             <label>
-              Tracks file:    
+              Plik z danymi utworów:    
               <input type="file" onChange={handleTracksFileChange}/>
             </label>
 
             <label>
-              Artists file:    
+              Plik z danymi artystów:    
               <input type="file" onChange={handleArtistsFileChange}/>
             </label>
 

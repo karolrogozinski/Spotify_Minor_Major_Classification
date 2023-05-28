@@ -19,7 +19,7 @@ def name_preds(preds):
         if pred == 1:
             preds_names.append('dur')
         elif pred == 0:
-            preds_names.append('mol')
+            preds_names.append('moll')
         else:
             preds_names.append('błędna predykcja')
 

@@ -101,97 +101,108 @@ const App = () => {
   };
 
   return (
-    <div className="container">
+    
+    <div>
+      <div style={{ justifyContent: 'center', textAlign: 'center' }}>
       <h1>[IUM] - Projekt - Dur czy moll?</h1>
 
       <button onClick={handlePredictionClick}>SERWOWANIE PREDYKCJI</button>
+      <span style={{ marginRight: '20px' }}></span>
       <button onClick={handleExperimentClick}>EKSPERYMENT</button>
-
+      </div>
       {model && (
         <div>
           <h2>Wybierz model:</h2>
           <button onClick={handleBaseModelClick}>MODEL PODSTAWOWY</button>
+          <span style={{ marginRight: '20px' }}></span>
           <button onClick={handleFinalModelClick}>MODEL DOCELOWY</button>
 
         </div>
       )}
 
       {baseModel && showPrediction && (
-        <div>
-          <h2>Serwowanie predykcji za pomocą modelu PODSTAWOWEGO.</h2>
-          <h3>Aby otrzymać predykcje dotyczące trybu utworów, należy załadować plik z utworami w formacie .jsonl i nacisnąc przycisk 'POBIERZ PREDYKCJE'. </h3>
-          <h3>Predykcje zostaną pobrane do pliku base_model_predictions.txt do folderu aplikacji.</h3>
+        <div style={{ justifyContent: 'center', textAlign: 'center' }}>
+          <div>
+            <h2>Serwowanie predykcji za pomocą modelu PODSTAWOWEGO.</h2>
+            <h3>Aby otrzymać predykcje dotyczące trybu utworów, należy załadować plik z utworami w formacie .jsonl i nacisnąc przycisk 'POBIERZ PREDYKCJE'. </h3>
+            <h3>Predykcje zostaną pobrane do pliku base_model_predictions.txt do folderu aplikacji.</h3>
 
-          <input type="file" onChange={handleTracksFileChange} />
+            <input type="file" onChange={handleTracksFileChange} />
 
-          <button onClick={handleGetBasePredictions}>POBIERZ PREDYKCJE</button>
+            <button onClick={handleGetBasePredictions}>POBIERZ PREDYKCJE</button>
+          </div>
         </div>
       )}
 
       {finalModel && showPrediction && (
-        <div>
-          <h2>Serwowanie predykcji za pomocą modelu DOCELOWEGO.</h2>
-          <h3>Aby otrzymać predykcje dotyczące trybu utworów, należy załadować plik z utworami oraz plik z artystami tychże utworów (oba w formacie .jsonl) i nacisnąć przycisk 'POBIERZ PREDYKCJE'. </h3>
-          <h3>Predykcje zostaną pobrane do pliku final_model_predictions.txt do folderu aplikacji.</h3>
+        <div style={{ justifyContent: 'center', textAlign: 'center' }}>
+          <div>
+            <h2>Serwowanie predykcji za pomocą modelu DOCELOWEGO.</h2>
+            <h3>Aby otrzymać predykcje dotyczące trybu utworów, należy załadować plik z utworami oraz plik z artystami tychże utworów (oba w formacie .jsonl) i nacisnąć przycisk 'POBIERZ PREDYKCJE'. </h3>
+            <h3>Predykcje zostaną pobrane do pliku final_model_predictions.txt do folderu aplikacji.</h3>
 
-          <label>
-            Tracks file:    
-            <input type="file" onChange={handleTracksFileChange}/>
-          </label>
+            <label>
+              Tracks file:    
+              <input type="file" onChange={handleTracksFileChange}/>
+            </label>
 
-          <label>
-            Artists file:    
-            <input type="file" onChange={handleArtistsFileChange}/>
-          </label>
+            <label>
+              Artists file:    
+              <input type="file" onChange={handleArtistsFileChange}/>
+            </label>
 
-          <button onClick={handleGetFinalPredictions}>POBIERZ PREDYKCJE</button>
+            <button onClick={handleGetFinalPredictions}>POBIERZ PREDYKCJE</button>
+          </div>
         </div>
       )}
 
       {showExperiment && (
-        <div>
-          <h2>Eksperyment A/B</h2>
-          <h3>Aby uzyskać informacje na temat danych jakościowych dotyczących działania obu modeli należy załadować pliki z utworami oraz artystami w formacie .jsonl oraz nacisnąć przycisk 'PORÓWNAJ MODELE'</h3>
-          <h4>Wyniki zostaną wyświetlone na ekranie.</h4>
+        <div style={{ justifyContent: 'center', textAlign: 'center' }}>
+          <div>
+            <h2>Eksperyment A/B</h2>
+            <h3>Aby uzyskać informacje na temat danych jakościowych dotyczących działania obu modeli należy załadować pliki z utworami oraz artystami w formacie .jsonl oraz nacisnąć przycisk 'PORÓWNAJ MODELE'</h3>
+            <h4>Wyniki zostaną wyświetlone na ekranie.</h4>
 
-          <label>
-            Tracks file:    
-            <input type="file" onChange={handleTracksFileChange}/>
-          </label>
+            <label>
+              Tracks file:    
+              <input type="file" onChange={handleTracksFileChange}/>
+            </label>
 
-          <label>
-            Artists file:    
-            <input type="file" onChange={handleArtistsFileChange}/>
-          </label>
+            <label>
+              Artists file:    
+              <input type="file" onChange={handleArtistsFileChange}/>
+            </label>
 
-          <button onClick={handleCompareModels}>PORÓWNAJ MODELE</button>
+            <button onClick={handleCompareModels}>PORÓWNAJ MODELE</button>
 
-          <div style={{ display: 'flex' }}>
-            <div>
-              <h3>List 1:</h3>
-              <ul>
-                {baseStats && baseStats.length > 0 ? (
-                  baseStats.map((item, index) => <li key={index}>{item}</li>)
-                ) : (
-                  <li>No items in List 1</li>
-                )}
-              </ul>
-            </div>
+            <div style={{ display: 'flex', justifyContent: 'center' }}>
+              <div>
+                <h3>Model postawowy:</h3>
+                <ul>
+                  {baseStats && baseStats.length > 0 ? (
+                    baseStats.map((item, index) => <li key={index}>{item}</li>)
+                  ) : (
+                    <li>Brak statystyk do wyświetlenia</li>
+                  )}
+                </ul>
+              </div>
 
-            <div>
-              <h3>List 2:</h3>
-              <ul>
-                {finalStats && finalStats.length > 0 ? (
-                  finalStats.map((item, index) => <li key={index}>{item}</li>)
-                ) : (
-                  <li>No items in List 2</li>
-                )}
-              </ul>
+              <div>
+                <h3>Model docelowy:</h3>
+                <ul>
+                  {finalStats && finalStats.length > 0 ? (
+                    finalStats.map((item, index) => <li key={index}>{item}</li>)
+                  ) : (
+                    <li>Brak statystyk do wyświetlenia</li>
+                  )}
+                </ul>
+              </div>
             </div>
           </div>
         </div>
       )}
     </div>
+    
   );
 };
 

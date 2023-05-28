@@ -2,3 +2,5 @@ build
 node_modules
 __pycache__
 data
+*.json
+*.txt
